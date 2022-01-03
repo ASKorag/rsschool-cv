@@ -1,10 +1,11 @@
 body, h1, h2, h3, ul, p, pre {
   margin: 0;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 body {
-  background-color: #f1eee9;
+  font-size: 20px;
+  background-color: var(--main-bg-color);
 }
 
 ul {
@@ -18,25 +19,48 @@ ul {
 }
 
 ._list {
-  list-style: none;
+  list-style-type: circle;
+  list-style-position: inside;
 }
 
 ._link {
   outline: none;
   text-decoration: none;
   color: inherit;
+  transition: color 0.3s ease-in-out;
+}
+
+._link:hover {
+  color: var(--accent-color);
 }
 
 .section__title {
   margin: 10px 0;
   text-transform: uppercase;
-  background-color: #efe2ba;
+  color: var(--main-color);
+  border-bottom: 2px solid var(--main-color);
   letter-spacing: 3px;
 }
 
-/* */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --main-bg-color: #f5f0e1;
+  --main-color: #1e3d59;
+  --accent-color: #ffc13b;
+}
 
 .header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 50px;
+  top: 0;
+  color: white;
+  background-color: var(--main-color);
 }
 
 .header__wrap {
@@ -49,74 +73,185 @@ ul {
   letter-spacing: 5px;
 }
 
-.header__photo {
-  border-radius: 50%;
-  width: 300px;
-  height: 300px;
-  margin-right: 50px;
-}
-
-.header__info {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #d79922;
-}
-
-.header__title {
-  margin-bottom: 10px;
-}
-
 .nav-panel {
   display: flex;
+  width: 100%;
   align-items: center;
-  /*height: 40px;*/
-  font-size: 20px;
-  background-color: #d79922;
+  line-height: 2;
 }
 
 .nav-panel__list {
+  list-style-type: none;
   text-transform: uppercase;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 10px;
-
+  justify-content: space-between;
+  width: 100%;
 }
 
 .nav-panel__link {
-  position: relative;
-  transition: color 0.3s ease-in-out;
+  margin: 0 10px;
 }
 
-.nav-panel__link:hover {
-  color: #4056a1;
+.about {
+  margin-top: 50px;
+}
+
+.about__wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about__photo {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  margin: 30px 0;
+}
+
+.about__greeting {
+  font-size: 30px;
+}
+
+.about__name {
+  text-transform: uppercase;
+  color: var(--main-color);
+}
+
+.about__prof {
+  text-transform: uppercase;
+  margin: 15px 0;
+}
+
+.about__subtitle {
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+.contacts__list {
+  list-style-type: none;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.contacts__link {
+  position: relative;
+  margin: 0 30px;
+  line-height: 2;
+  color: var(--main-color);
+}
+
+.contacts__link:before {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  left: -30px;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.contacts__link--phone:before {
+  background-image: url("assets/icons/phone.svg");
+}
+
+.contacts__link--email:before {
+  background-image: url("assets/icons/email.svg");
+}
+
+.contacts__link--telegram:before {
+  background-image: url("assets/icons/telegram.svg");
+ }
+
+.contacts__link--discord:before {
+  background-image: url("assets/icons/discord.svg");
+}
+
+.educ__link {
+  color: var(--main-color);
+}
+
+.work__gamestore {
+  color: var(--main-color);
 }
 
 .footer {
+  margin-top: 15px;
   height: 50px;
-
-  font-size: 20px;
+  background-color: var(--main-color);
+  color: white;
 }
 
 .footer__wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #d79922;
 }
 
 .footer__links {
+  list-style-type: none;
   display: flex;
-  gap: 100px;
+  gap: 90px;
 }
 
 .footer__link--rss {
   display: block;
   width: 80px;
   height: 30px;
-  background-image: url("images/rss.svg");
+  background-image: url("assets/images/rss.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
 
+/* media */
 
+@media (max-width: 950px) {
+  .about {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 900px) {
+  .code__wrap > pre {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 650px) {
+  body {
+    font-size: 16px;
+  }
+
+  .header {
+    position: relative;
+  }
+
+  .about {
+    margin-top: 0;
+  }
+
+  .code__wrap > pre {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 500px) {
+  .code__wrap > pre {
+    font-size: 8px;
+  }
+
+  .footer__links {
+    gap: 40px;
+  }
+}
